@@ -1,0 +1,31 @@
+//
+//  tracker.proto
+//  tracker
+//
+//  Created by Ryan Pendleton on 1/2/16.
+//  Copyright © 2016 Ryan Pendleton. All rights reserved.
+//
+
+// option optimize_for = LITE_RUNTIME;
+
+message GPSDataPoint {
+    message Time {
+        required int64 seconds = 1;
+        optional int32 microseconds = 2;
+    }
+
+    required Time time = 1;
+    required double latitude = 2;
+    required double longitude = 3;
+    required double altitude = 4;
+
+    optional double speed = 5;
+    optional double bearing = 6;
+    optional int32 satellites = 7;
+}
+
+message TravelDataPoint {
+    required GPSDataPoint location = 1;
+    required int64 ticks = 2;
+    required int64 odometer = 3;
+}
