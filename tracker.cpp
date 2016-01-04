@@ -249,7 +249,7 @@ int main(int argc, char *argv[]) {
 			if (strcmp(argv[2], "expand") == 0) {
 				action = EXPAND;
 			}
-			if (strcmp(argv[2], "nmea") == 0) {
+			else if (strcmp(argv[2], "nmea") == 0) {
 				action = NMEA;
 			}
 			else {
@@ -327,7 +327,7 @@ int main(int argc, char *argv[]) {
 									   tm->tm_mday, tm->tm_mon + 1, tm->tm_year + 1900-2000
 									   );
 					
-					printf("%s*%02x\n", record, gps_checksum_line(record, len));
+					printf("%s*%02X\n", record, gps_checksum_line(record, len));
 					free(record);
 				}
 				else if (action == SUMMARY) {
