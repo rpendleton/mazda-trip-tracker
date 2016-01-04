@@ -70,7 +70,7 @@ Trip Summary:
 ### NMEA data
 
 You can also export the GPS data as NMEA data, suitable for use with viewers
-such as [FreeNMEA.net](freenmea.net/decoder):
+such as [FreeNMEA.net](http://freenmea.net/decoder):
 
 ```
 $ trip-tracker ~/2016-1-4T7-0-33 nmea
