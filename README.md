@@ -2,10 +2,21 @@
 
 Mazda Trip Tracker is a tweak for the Mazda Connect system that allows tracking
 various trip statistics alongside full GPS logs. After installing the tweak,
-trips will be logged to the navigation SD card, and can be analyzed later using
-a computer.
+trips will be logged to the navigation SD card and can be analyzed later using a
+computer.
 
-The following data is recorded once every second:
+## File Format
+
+### Trip Journal
+
+Each trip is stored as a single file known as a journal. As data points are
+collected each second, they are encoded using protocol buffers, prefixed with
+their length, and appended to the trip journal.
+
+### Data Points
+
+Data points record the following information every second:
+
 - GPS information
   - time (epoch timestamp)
   - latitude (decimal)
@@ -15,17 +26,13 @@ The following data is recorded once every second:
 - number of odometer ticks (~20 cm each) since last data point
 - total car odometer value (km)
 
-## File Format
+### File Size
 
-Each trip is stored as a single file consisting of data points. As data points
-are collected every second, they are encoded using protocol buffers, prefixed
-with their length, and then appended to the trip journal file.
-
-The size of data points will vary since they are encoded using protocol buffers,
-but you can expect them to be around 45 to 81 bytes each. This means that as a
-worst case scenario, it would only take 285 KiB to store an hour of driving. To
-put this number into perspective, you could drive 24/7 for an entire year and
-store the trip using only 2.38 GiB of storage.
+The size of data points will vary since they are encoded using protocol buffers.
+However, you can typically expect them to be around 45 to 81 bytes each. This
+means that as a worst case scenario, it would only take 285 KiB to store an hour
+of driving. To put this number into perspective, you could drive 24/7 for an
+entire year and store the trip using only 2.38 GiB of storage.
 
 When using a more reasonable estimate of 63 bytes per data point and only two
 hours of driving every day, you would only need 0.15 GiB of storage for the
@@ -75,11 +82,19 @@ $GPRMC,070037,A,...
 ...
 ```
 
-### Protocol Buffer Objects
+### Protocol Buffer Descriptions
 
-For debugging purposes, it is also possible to generate a description for each
-data entry. The description is created using the description method from
-protocol buffers, and will contain all of the information recorded.
+For debugging purposes, it is also possible to generate a detailed, human
+readable dump of each data entry. The dump is created using the description
+method of the protocol buffer objects, so it will contain every piece of
+information recorded.
+
+(Note: aside from simple tasks, avoid using this dumped data as input to another
+program. The dump format is not meant to be parsed and is likely to change in
+the future. If you want to process trip data points, it is must easier to use
+the existing `tracker.proto` definition file in a new program. This allows you
+to use whatever language you feel comfortable with, assuming a protocol buffer
+library has been created for it.)
 
 ```
 $ trip-tracker ~/2016-1-4T7-0-33 expand
