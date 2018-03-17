@@ -1,4 +1,6 @@
 # Mazda Trip Tracker
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frpendleton%2Fmazda-trip-tracker.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frpendleton%2Fmazda-trip-tracker?ref=badge_shield)
+
 
 Mazda Trip Tracker is a tweak for the Mazda Connect system that allows tracking
 various trip statistics alongside full GPS logs. After installing the tweak,
@@ -145,3 +147,7 @@ odometer: 2869
 
 ...
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frpendleton%2Fmazda-trip-tracker.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Frpendleton%2Fmazda-trip-tracker?ref=badge_large)
