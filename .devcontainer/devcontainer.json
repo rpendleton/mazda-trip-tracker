@@ -1,9 +1,12 @@
-// Default Ubuntu-based DevContainer Template.
 // For more customization options, see https://containers.dev/implementors/json_reference
 {
   name: "Default",
-  image: "ubuntu:latest",
+  image: "cr.rp.dev/mazda-dev:latest",
   remoteUser: "ubuntu",
+
+  remoteEnv: {
+    "PATH": "/opt/mazda-toolchain/bin:${containerEnv:PATH}",
+  },
 
   customizations : {
     // Configure JetBrains IDE-specific properties
@@ -20,7 +23,8 @@
     }
   },
   features: {
-    "ghcr.io/devcontainers/features/git" : {},
     // Add additional features to your project using auto-completion.
+    // "ghcr.io/devcontainers/features/git" : {},
+    // "ghcr.io/rpendleton/mazda-toolchain/mazda-toolchain": {},
   },
 }
