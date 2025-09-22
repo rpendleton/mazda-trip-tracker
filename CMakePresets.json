@@ -1,0 +1,34 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 19,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "cross-compile-debug",
+            "displayName": "Cross-Compile Debug",
+            "description": "Cross-compile for Mazda CMU (Debug)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/cross-debug",
+            "toolchainFile": "/opt/mazda-toolchain/toolchain.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        },
+        {
+            "name": "cross-compile-release",
+            "displayName": "Cross-Compile Release",
+            "description": "Cross-compile for Mazda CMU (Release)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/cross-release",
+            "toolchainFile": "/opt/mazda-toolchain/toolchain.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        }
+    ]
+}
