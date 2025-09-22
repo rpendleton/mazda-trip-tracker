@@ -152,14 +152,14 @@ static void handle_gps_datapoint(const GPSDataPoint &data, void *ptr) {
 	if (state == WAITING_FOR_DISK) {
 		struct stat s;
 
-		if (stat("/mnt/sd_nav/mods", &s) == 0) {
+		if (stat("/mnt/sd_nav/tweaks", &s) == 0) {
 			state = RECORDING;
 			ctx->state = RECORDING;
 
 			time_t time = data.time().seconds();
 			struct tm *timeComponents = gmtime(&time);
 			char *filename;
-			asprintf(&filename, "/mnt/sd_nav/mods/trips/%i-%i-%iT%i-%i-%i",
+			asprintf(&filename, "/mnt/sd_nav/tweaks/trips/%i-%i-%iT%i-%i-%i",
 					 timeComponents->tm_year + 1900,
 					 timeComponents->tm_mon + 1,
 					 timeComponents->tm_mday,
